@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1>Todos</h1>
+</div>
+
+<form method="post">
+    <input asp-for="@Model.Filter" type="text" />
+
+
+    <input type="submit" value="Submit" />
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Is Done?</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var todo in Model.Todos)
+        {
+            <tr>
+                <td>@todo.Id</td>
+                <td>@todo.Name</td>
+                <td>@todo.Description</td>
+                <td>@(todo.IsDone ? "Done" : "Not Done")</td>
+            </tr>
+        }
+    </tbody>
+</table>
